@@ -41,4 +41,13 @@ public class MonsterBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
     }
+
+     private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {   
+            var PlayerHealth = other.GetComponent<PlayerHealth>();
+            PlayerHealth.TakeDamage();
+        }
+    }
 }
