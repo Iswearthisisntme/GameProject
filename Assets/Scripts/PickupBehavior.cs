@@ -15,15 +15,20 @@ public class PickupBehavior : MonoBehaviour
         // Checks if player was the colliding object with the pickup
         if (!hasBeenCollected && other.CompareTag("Player"))
         {
-            // Destroy the pickup object
-            Destroy(gameObject);
+            transform.parent = other.transform;
+
             hasBeenCollected = true;
+
+            // Destroy the pickup object
+            // To be used when the inventory system is fully implemented
+            //Destroy(gameObject);
         }
     }
 
+    // Planned method to be implemented in the final game
     //private void OnDestroy()
     //{
-        // TODO: Add nighlight icon to player inventory
+    // Add nighlight icon to player inventory
 
     //}
 }
