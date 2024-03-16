@@ -23,10 +23,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if(Input.GetButton("Jump"))
-            {                
-            TakeDamage();
-            }
 
         for (int i = 0; i < hearts.Length; i++) {
 
