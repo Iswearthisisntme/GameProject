@@ -24,21 +24,13 @@ public class LevelManager : MonoBehaviour
 
     public void LevelLost()
     {
-        //audio.clip = gameOverSFX;
-        //audio.Play(); // Play the game over sound effect
         isGameOver = true;
-        //gameText.text = "GAME OVER.";
-        //gameText.gameObject.SetActive(true);
         Invoke("LoadCurrentLevel", 2);
     }
 
     public void LevelWon()
     {
-        //audio.clip = gameWonSFX;
-        //audio.Play(); // Play the game won sound effect
         isGameOver = true;
-        //gameText.text = "YOU WIN!";
-        //gameText.gameObject.SetActive(true);
         if (!string.IsNullOrEmpty(nextLevel))
         {
             Invoke("LoadNextLevel", 2);
