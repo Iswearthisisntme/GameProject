@@ -266,7 +266,7 @@ MonoBehaviour:
   interactable: 0
   pickedup: 0
   objRigidbody: {fileID: 553510736}
-  throwAmount: 0
+  throwAmount: 300
 --- !u!54 &553510736
 Rigidbody:
   m_ObjectHideFlags: 0
