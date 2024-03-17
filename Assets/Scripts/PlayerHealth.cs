@@ -12,12 +12,14 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    LevelManager levelManager;
     int currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = startingHealth;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             PlayerDies();
+            levelManager.LevelLost();
         }
     }
 
