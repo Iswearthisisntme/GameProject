@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class ThrowableBehavior : MonoBehaviour
 {
-    public Transform objTransform, cameraTrans;
+    public Transform interactableBox;
     public bool interactable, pickedup;
-    public Rigidbody objRigidbody;
+    public Rigidbody rb;
     public float throwAmount;
-    
 
-    void OnTriggerStay(Collider other)
+    void Start()
     {
+        rb = GetComponent<Rigidbody>();
+    }
+    void OnTriggerStay(Collider other)
+    {   
         if (other.CompareTag("InteractableBox"))
         {
             interactable = true;
+            interactableBox = other.transform;
         }
     }
     void OnTriggerExit(Collider other)
@@ -27,8 +31,8 @@ public class ThrowableBehavior : MonoBehaviour
             }
             if (pickedup == true)
             {
-                objTransform.parent = null;
-                objRigidbody.useGravity = true;
+                gameObject.transform.parent = null;
+                rb.useGravity = true;
                 interactable = false;
                 pickedup = false;
             }
@@ -40,26 +44,27 @@ public class ThrowableBehavior : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                objTransform.parent = cameraTrans;
-                objRigidbody.useGravity = false;
+                gameObject.transform.parent = interactableBox;
+                rb.useGravity = false;
                 pickedup = true;
             }
             if (Input.GetMouseButtonUp(0))
             {
-                objTransform.parent = null;
-                objRigidbody.useGravity = true;
+                gameObject.transform.parent = null;
+                rb.useGravity = true;
                 pickedup = false;
             }
             if(pickedup == true)
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    objTransform.parent = null;
-                    objRigidbody.useGravity = true;
-                    objRigidbody.velocity = cameraTrans.forward * throwAmount * Time.deltaTime;
+                    gameObject.transform.parent = null;
+                    rb.useGravity = true;
+                    rb.AddForce(interactableBox.forward * throwAmount,ForceMode.Impulse);
                     pickedup = false;
                 }
             }
         }
     }
+
 }
