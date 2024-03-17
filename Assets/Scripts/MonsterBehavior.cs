@@ -31,7 +31,8 @@ public class MonsterBehavior : MonoBehaviour
         RaycastHit hit;
         float step = moveSpeed * Time.deltaTime;
 
-        if(Physics.Raycast(player.position, player.forward, out hit, Mathf.Infinity))
+        if(Physics.Raycast(player.position, player.forward, out hit, Mathf.Infinity)
+            && hit.transform.tag == "Monster")
         {
             
         }

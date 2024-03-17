@@ -19,8 +19,10 @@ public class PickupBehavior : MonoBehaviour
 
             hasBeenCollected = true;
 
-            // Destroy the pickup object
-            // To be used when the inventory system is fully implemented
+            gameObject.GetComponent<Animator>().SetTrigger("EndAnimation");
+
+            //Destroy the pickup object
+            //To be used when the inventory system is fully implemented
             //Destroy(gameObject);
         }
     }

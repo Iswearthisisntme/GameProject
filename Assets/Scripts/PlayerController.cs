@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.81f;
     public float airControl = 10;
 
+    float fastSpeed;
+
     CharacterController controller;
     Vector3 input, moveDirection;
     
@@ -16,6 +18,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        fastSpeed = moveSpeed * 1.8f;
     }
 
     // Update is called once per frame
@@ -25,15 +29,24 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
-        
-        input *= moveSpeed;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            input *= fastSpeed;
+        }
+        else
+        {
+            input *= moveSpeed;
+        }
 
         if(controller.isGrounded)
         {
             moveDirection = input;
 
+
             if(Input.GetButton("Jump"))
             {
+ 
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
                 
             }
