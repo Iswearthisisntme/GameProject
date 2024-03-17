@@ -8,10 +8,10 @@ public class ThrowableBehavior : MonoBehaviour
     public bool interactable, pickedup;
     public Rigidbody objRigidbody;
     public float throwAmount;
+    
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("oeij");
         if (other.CompareTag("InteractableBox"))
         {
             interactable = true;
