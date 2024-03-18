@@ -49,11 +49,14 @@ public class MonsterBehavior : MonoBehaviour
 
      private void OnCollisionEnter(Collision collision)
     {   
-        Debug.Log("kakak");
         if (collision.gameObject.CompareTag("Block"))
         {
-            transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
+            Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (otherRigidbody.velocity.magnitude > 0.3f) 
+            {
+                transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
+            }
         }
         if(collision.gameObject.CompareTag("Player"))
         {   
