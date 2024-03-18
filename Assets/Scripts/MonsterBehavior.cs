@@ -6,9 +6,13 @@ public class MonsterBehavior : MonoBehaviour
 {
     public Transform player;
     public float moveSpeed = 0.5f;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     void Start()
     {
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -43,11 +47,18 @@ public class MonsterBehavior : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
+     private void OnCollisionEnter(Collision collision)
+    {   
+        Debug.Log("kakak");
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
+        }
+        if(collision.gameObject.CompareTag("Player"))
         {   
-            var PlayerHealth = other.GetComponent<PlayerHealth>();
+            
+            var PlayerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             PlayerHealth.TakeDamage();
         }
     }
