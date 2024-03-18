@@ -5,19 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 2.0f;
-    public float jumpHeight = 1.0f;
+    public float jumpHeight = 5.0f;
     public float gravity = 9.81f;
     public float airControl = 10;
+    public float jumpTransitionDelay = 0.5f; 
 
     float fastSpeed;
 
     CharacterController controller;
     Vector3 input, moveDirection;
+    Animator anim;
+    float jumpTransitionTimer = 0f;
+    bool isJumping = false;
     
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
 
         fastSpeed = moveSpeed * 1.8f;
     }
@@ -30,39 +35,71 @@ public class PlayerController : MonoBehaviour
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            input *= fastSpeed;
-        }
-        else
-        {
-            input *= moveSpeed;
-        }
-
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
             moveDirection = input;
 
-
-            if(Input.GetButton("Jump"))
+            if (Input.GetButton("Jump"))
             {
- 
+                anim.SetInteger("animState", 1);
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
-                
+                isJumping = true;
+                jumpTransitionTimer = 0f;
             }
             else
             {
                 moveDirection.y = 0.0f;
             }
-        } 
-        else 
+        }
+        else
         {
             input.y = moveDirection.y;
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
         }
 
+        //move the character down to account for gravity 
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (isJumping)
+        {
+            jumpTransitionTimer += Time.deltaTime;
+            if (jumpTransitionTimer >= jumpTransitionDelay)
+            {
+                anim.SetInteger("animState", 0);
+                isJumping = false;
+            }
+        }
     }
+
+    void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            anim.SetInteger("animState", 3);
+            input *= fastSpeed;
+        }
+        else 
+        {
+            input *= moveSpeed;
+
+            if (moveHorizontal != 0 || moveVertical > 0)
+            {
+                anim.SetInteger("animState", 4);
+            }
+            else if (moveVertical < 0)
+            {
+                anim.SetInteger("animState", 5);
+            }
+            else if (!isJumping)
+            {
+                anim.SetInteger("animState", 0);
+            }
+        }
+    }
+    
 }
