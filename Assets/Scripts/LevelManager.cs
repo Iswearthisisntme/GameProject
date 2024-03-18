@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     // String that has next level name
     public string nextLevel;
+    public Text gameText;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,16 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         isGameOver = true;
+        gameText.text = "GAME OVER.";
+        gameText.gameObject.SetActive(true);
         Invoke("LoadCurrentLevel", 2);
     }
 
     public void LevelWon()
     {
         isGameOver = true;
+        gameText.text = "LEVEL COMPLETE.";
+        gameText.gameObject.SetActive(true);
         if (!string.IsNullOrEmpty(nextLevel))
         {
             Invoke("LoadNextLevel", 2);

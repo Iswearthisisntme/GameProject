@@ -5,9 +5,35 @@ using UnityEngine;
 public class PickupBehavior : MonoBehaviour
 {
     private bool hasBeenCollected = false; // Flag to prevent double counting
+    private GameObject player;
+    private GameObject lightSocket;
+    private LevelManager levelManager;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        lightSocket = GameObject.FindGameObjectWithTag("Outlet");
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && hasBeenCollected)
+        {
+            float distance = Vector3.Distance(lightSocket.transform.position, player.transform.position);
+            //print(distance);
+            if (distance < 2.6f) //can adjust range later
+            {
+                PlugIn();
+            }
+        }
+    }
+
+    private void PlugIn()
+    {
+        Destroy(gameObject);
+        levelManager.LevelWon();
+
     }
 
     private void OnTriggerEnter(Collider other)
