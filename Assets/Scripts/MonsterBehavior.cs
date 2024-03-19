@@ -10,8 +10,14 @@ public class MonsterBehavior : MonoBehaviour
     Animator anim;
     float monsterYPos;
 
+        private Vector3 initialPosition;
+    private Quaternion initialRotation;
+
     void Start()
     {
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+        
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -50,8 +56,27 @@ public class MonsterBehavior : MonoBehaviour
             transform.LookAt(player);
             anim.SetInteger("animState", 1);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-            //var PlayerHealth = player.GetComponent<PlayerHealth>();
-            //PlayerHealth.TakeDamage();
+            
+        }
+    }
+
+    void OnCollisionEnter(Collision collision) 
+    {   
+
+       if (collision.gameObject.CompareTag("Block"))
+        {
+        Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (otherRigidbody.velocity.magnitude > 0.3f) 
+            {
+                transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var PlayerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth.TakeDamage();
         }
     }
 }
