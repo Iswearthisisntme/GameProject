@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThrowableBehavior : MonoBehaviour
 {
     public Transform interactableBox;
-    public bool interactable, pickedup;
+    public bool interactable, pickedup, isThrown;
     public Rigidbody rb;
     public float throwAmount;
 

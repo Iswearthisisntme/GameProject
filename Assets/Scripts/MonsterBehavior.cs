@@ -5,24 +5,29 @@ using UnityEngine;
 public class MonsterBehavior : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 0.5f;
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
+    public float moveSpeed = 0.01f;
+
+    Animator anim;
+    float monsterYPos;
 
     void Start()
     {
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+
+        monsterYPos = transform.position.y;
+
+        anim = GetComponent<Animator>();
+
+        anim.SetInteger("animState", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
@@ -36,30 +41,17 @@ public class MonsterBehavior : MonoBehaviour
         float step = moveSpeed * Time.deltaTime;
 
         if(Physics.Raycast(player.position, player.forward, out hit, Mathf.Infinity)
-            && hit.transform.tag == "Monster")
+            && hit.transform.tag == "MonsterUnderTheBed")
         {
-            
+            anim.SetInteger("animState", 0);
         }
         else 
         {
             transform.LookAt(player);
+            anim.SetInteger("animState", 1);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-        }
-    }
-
-     private void OnCollisionEnter(Collision collision)
-    {   
-        Debug.Log("kakak");
-        if (collision.gameObject.CompareTag("Block"))
-        {
-            transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
-        }
-        if(collision.gameObject.CompareTag("Player"))
-        {   
-            
-            var PlayerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            PlayerHealth.TakeDamage();
+            // var PlayerHealth = player.GetComponent<PlayerHealth>();
+            // PlayerHealth.TakeDamage();
         }
     }
 }

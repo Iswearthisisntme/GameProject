@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    LevelManager levelManager;
+    private LevelManager levelManager;
     int currentHealth;
 
     // Start is called before the first frame update
