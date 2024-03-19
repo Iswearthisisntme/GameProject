@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6938,9 +6938,49 @@ PrefabInstance:
       value: Ola
       objectReference: {fileID: 0}
     - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: fullHeart
+      value: 
+      objectReference: {fileID: 21300000, guid: c72464e9a0a6a464ba6e70b39c72d886, type: 3}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: emptyHeart
+      value: 
+      objectReference: {fileID: 21300000, guid: a25c1cf7152c7214a88c9f3cd2b2d47b, type: 3}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: numOfHearts
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: startingHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
       propertyPath: monsterDamageSFX
       value: 
       objectReference: {fileID: 8300000, guid: 0326b73c26a639b4087621292b71f02e, type: 3}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.data[0]
+      value: 
+      objectReference: {fileID: 739796568}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1998606935}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 587442202}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1431471376}
+    - target: {fileID: 1937157119782203332, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: hearts.Array.data[4]
+      value: 
+      objectReference: {fileID: 716061104}
     - target: {fileID: 8855613822494282694, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6954,6 +6994,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1321392926300919291, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 516859214}
+    - targetCorrespondingSourceObject: {fileID: 1321392926300919291, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 3588069130860155343}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1809698768490139457, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
@@ -11926,6 +11969,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5977657, y: 0.5, z: 0.6}
   m_Center: {x: 0, y: 0.0517614, z: -0.00000002980233}
+--- !u!1 &516859213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516859214}
+  - component: {fileID: 516859215}
+  m_Layer: 0
+  m_Name: InteractableBox
+  m_TagString: InteractableBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516859214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516859213}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.002, y: 0.9000006, z: 0.992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1152904602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &516859215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516859213}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &537297717
 Mesh:
   m_ObjectHideFlags: 0
@@ -19501,7 +19597,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -25634,7 +25730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744719340009228226, guid: 893c8bdb21f773b4a9b8c1ea4724d3d8, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3744719340009228226, guid: 893c8bdb21f773b4a9b8c1ea4724d3d8, type: 3}
       propertyPath: m_ProvidesContacts
@@ -25683,6 +25779,10 @@ PrefabInstance:
     - target: {fileID: 5265777560694397049, guid: 893c8bdb21f773b4a9b8c1ea4724d3d8, type: 3}
       propertyPath: m_Name
       value: MonsterUnderBed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265777560694397049, guid: 893c8bdb21f773b4a9b8c1ea4724d3d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
