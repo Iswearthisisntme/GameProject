@@ -50,8 +50,8 @@ public class MonsterBehavior : MonoBehaviour
             transform.LookAt(player);
             anim.SetInteger("animState", 1);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-            var PlayerHealth = player.GetComponent<PlayerHealth>();
-            PlayerHealth.TakeDamage();
+            //var PlayerHealth = player.GetComponent<PlayerHealth>();
+            //PlayerHealth.TakeDamage();
         }
     }
 }

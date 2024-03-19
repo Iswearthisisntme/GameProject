@@ -8,6 +8,8 @@ public class PickupBehavior : MonoBehaviour
     private GameObject player;
     private GameObject lightSocket;
     private LevelManager levelManager;
+    public AudioClip pickupSFX;
+    public AudioClip pluginSFX;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class PickupBehavior : MonoBehaviour
             if (distance < 2.6f) //can adjust range later
             {
                 PlugIn();
+                AudioSource.PlayClipAtPoint(pluginSFX, Camera.main.transform.position);
             }
         }
     }
@@ -45,7 +48,10 @@ public class PickupBehavior : MonoBehaviour
 
             hasBeenCollected = true;
 
+            AudioSource.PlayClipAtPoint(pickupSFX, Camera.main.transform.position);
+
             gameObject.GetComponent<Animator>().SetTrigger("EndAnimation");
+
 
             //Destroy the pickup object
             //To be used when the inventory system is fully implemented

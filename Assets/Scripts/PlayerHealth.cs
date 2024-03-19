@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public AudioClip monsterDamageSFX;
 
     private LevelManager levelManager;
     int currentHealth;
@@ -57,5 +58,14 @@ public class PlayerHealth : MonoBehaviour
     void PlayerDies()
     {
         transform.Rotate(-90, 0, 0, Space.Self);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("MonsterUnderTheBed"))
+        {
+            TakeDamage();
+            AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
+        }
     }
 }
