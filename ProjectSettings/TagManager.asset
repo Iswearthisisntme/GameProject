@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< Updated upstream
-  - Monster
-  - Outlet
-  - InteractableBox
-  - Block
-=======
-  - InteractableBox
-  - MonsterUnderTheBed
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
