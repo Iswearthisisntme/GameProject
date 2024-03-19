@@ -10,7 +10,7 @@ public class MonsterBehavior : MonoBehaviour
     Animator anim;
     float monsterYPos;
 
-        private Vector3 initialPosition;
+    private Vector3 initialPosition;
     private Quaternion initialRotation;
 
     void Start()
