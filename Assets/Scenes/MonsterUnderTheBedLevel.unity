@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6801,6 +6801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 267546122}
   - component: {fileID: 267546123}
+  - component: {fileID: 267546124}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -6835,7 +6836,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 0
   m_Range: 15
   m_SpotAngle: 131.4
   m_InnerSpotAngle: 1
@@ -6885,6 +6886,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &267546124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267546121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d29136496714ff459c9d2aa61c0c7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLight: {fileID: 267546123}
+  maxInterval: 1
+  maxFlicker: 0.2
 --- !u!1001 &323432856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6957,6 +6973,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[4]
       value: 
       objectReference: {fileID: 716061104}
+    - target: {fileID: 8405490281184283452, guid: 9b60d41fd672e994dabdbb8a248b6fe9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35334,6 +35354,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4278012070747554521, guid: 936089d29063cbf4287b9a4fb3fee03a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b25f2de1040a0d42b1310ca752c2f97, type: 2}
     - target: {fileID: 5152505218856512912, guid: 936089d29063cbf4287b9a4fb3fee03a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.095
@@ -36109,7 +36133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2122524002
 MonoBehaviour:
   m_ObjectHideFlags: 0

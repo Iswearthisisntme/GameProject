@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             PlayerDies();
-            //levelManager.LevelLost();
+            levelManager.LevelLost();
         }
     }
 
@@ -60,9 +60,9 @@ public class PlayerHealth : MonoBehaviour
         transform.Rotate(-90, 0, 0, Space.Self);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.CompareTag("MonsterUnderTheBed"))
+        if (collision.collider.CompareTag("MonsterUnderTheBed"))
         {
             TakeDamage();
             AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
