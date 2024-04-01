@@ -11,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public AudioClip monsterDamageSFX;
 
     private LevelManager levelManager;
     int currentHealth;
@@ -44,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        Debug.Log("took damage");
         if(currentHealth > 0)
         {
             currentHealth -= 1;
@@ -60,12 +60,4 @@ public class PlayerHealth : MonoBehaviour
         transform.Rotate(-90, 0, 0, Space.Self);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("MonsterUnderTheBed"))
-        {
-            TakeDamage();
-            AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
-        }
-    }
 }

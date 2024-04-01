@@ -13,6 +13,12 @@ public class MonsterBehavior : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
+    float elapsedTime = 0;
+    public float attackRate = 2.0f;
+
+    public AudioClip monsterDamageSFX;
+
+
     void Start()
     {
         initialPosition = transform.position;
@@ -33,7 +39,7 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        elapsedTime += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -60,12 +66,12 @@ public class MonsterBehavior : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision) 
+    void OnTriggerEnter(Collider other) 
     {   
-
-       if (collision.gameObject.CompareTag("Block"))
+        Debug.Log("enter");
+       if (other.gameObject.CompareTag("Block"))
         {
-        Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+        Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
             if (otherRigidbody.velocity.magnitude > 0.3f) 
             {
                 transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
@@ -73,10 +79,18 @@ public class MonsterBehavior : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            var PlayerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            PlayerHealth.TakeDamage();
+            Debug.Log("player");
+            var PlayerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            if(elapsedTime >= attackRate)
+            {
+                Debug.Log("took damage");
+                AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
+                PlayerHealth.TakeDamage();
+                elapsedTime = 0.0f;
+            }
+            
         }
     }
 }
