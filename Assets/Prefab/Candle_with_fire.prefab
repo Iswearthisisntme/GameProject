@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4107678735355579196}
   - component: {fileID: 303511068901663460}
   - component: {fileID: 5113577876326155518}
+  - component: {fileID: 9019459382632972023}
   m_Layer: 0
   m_Name: Candle_with_fire
-  m_TagString: Untagged
+  m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,6 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9029974921585120766}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,7 +35,6 @@ Transform:
   m_Children:
   - {fileID: 6784116070975986978}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4107678735355579196
 MeshFilter:
@@ -94,17 +95,40 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9029974921585120766}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8631012603498426806, guid: 45d7e9d9a7529a54391b9da9a8db4c09, type: 3}
+--- !u!114 &9019459382632972023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029974921585120766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4604449d056e4d6291af0064b9180f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  litCandle: {fileID: 9029974921585120766}
+  unlitCandle: {fileID: 8856163081353341073, guid: f8665cd5f462e3d43a44d1ec708048dc, type: 3}
 --- !u!1001 &3338314961386457500
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7773810594509094047}
     m_Modifications:
     - target: {fileID: 6255064434615560082, guid: e4738207e829d924a8be902a855f7a24, type: 3}
@@ -156,6 +180,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4738207e829d924a8be902a855f7a24, type: 3}
 --- !u!4 &6784116070975986978 stripped
 Transform:
