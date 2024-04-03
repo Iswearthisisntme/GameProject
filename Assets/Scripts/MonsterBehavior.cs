@@ -13,11 +13,6 @@ public class MonsterBehavior : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
-    float elapsedTime = 0;
-    public float attackRate = 2.0f;
-
-    public AudioClip monsterDamageSFX;
-
 
     void Start()
     {
@@ -39,7 +34,7 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
+        
     }
 
     private void FixedUpdate()
@@ -49,6 +44,12 @@ public class MonsterBehavior : MonoBehaviour
 
     void ReticleEffect() 
     {
+        //ideas if animation is too snappy:
+        //angle check (is it within an approximate cone or angle)
+        //add a threshold before you can change states
+        // a time? (change every .5 seconds)
+        //starts the state once you're within 10 degrees
+
         RaycastHit hit;
         float step = moveSpeed * Time.deltaTime;
 
@@ -59,38 +60,18 @@ public class MonsterBehavior : MonoBehaviour
         }
         else 
         {
-            transform.LookAt(player);
+            FaceTarget(player.position);
             anim.SetInteger("animState", 1);
-            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-            
+            //transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
     }
 
-    void OnTriggerEnter(Collider other) 
-    {   
-        Debug.Log("enter");
-       if (other.gameObject.CompareTag("Block"))
-        {
-        Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
-            if (otherRigidbody.velocity.magnitude > 0.3f) 
-            {
-                transform.position = Vector3.Lerp(transform.position, initialPosition, 20 * Time.deltaTime);
-                transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 20 * Time.deltaTime);
-            }
-        }
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player");
-            var PlayerHealth = other.gameObject.GetComponent<PlayerHealth>();
-            if(elapsedTime >= attackRate)
-            {
-                Debug.Log("took damage");
-                AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
-                PlayerHealth.TakeDamage();
-                elapsedTime = 0.0f;
-            }
-            
-        }
+    void FaceTarget(Vector3 target)
+    {
+        Vector3 directionToTarget = (target - transform.position).normalized;
+        directionToTarget.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 
+            10 * Time.deltaTime);
     }
 }
