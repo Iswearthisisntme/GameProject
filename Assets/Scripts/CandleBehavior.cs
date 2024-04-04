@@ -1,41 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CandleBehavior : MonoBehaviour
 {
-    private bool hasBeenSnuffed = false; // Flag to prevent double counting
     private GameObject player;
+    private LevelManager levelManager;
 
     public GameObject litCandle;
     public GameObject flame;
+    GameObject[] candles;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        levelManager = FindObjectOfType<LevelManager>();
+        candles = GameObject.FindGameObjectsWithTag("Candle");
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !hasBeenSnuffed)
+        bool allCandlesSnuffed = true;
+
+        foreach (GameObject candle in candles)
+        {
+            if (candle.GetComponent<CandleBehavior>().flame.activeSelf)
+            {
+                allCandlesSnuffed = false;
+                break;
+            }
+        }
+
+        if (allCandlesSnuffed)
+        {
+            levelManager.LevelWon();
+        }
+
+        if (Input.GetButtonDown("Fire1"))
         {
             float distance = Vector3.Distance(litCandle.transform.position, player.transform.position);
-            if (distance < 2.0f) //can adjust range later
+            if (distance < 2.0f) 
             {
                 SnuffCandle();
             }
         }
     }
 
-    // change animation state here maybe?
     private void SnuffCandle()
     {
-        // replace with audio sound for candle being put out
-        //AudioSource.PlayClipAtPoint(pluginSFX, Camera.main.transform.position);
+        // Replace with audio sound for candle being put out
+        // AudioSource.PlayClipAtPoint(pluginSFX, Camera.main.transform.position);
 
         flame.SetActive(false);
-
-        hasBeenSnuffed = true;
     }
 }
