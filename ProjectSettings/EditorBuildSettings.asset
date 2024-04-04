@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MonsterUnderTheBedLevel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/BloodyMaryLevel.unity
+    guid: eaa8d9cbfe6e8a147a23d797733a83ae
   m_configObjects: {}

@@ -43,7 +43,8 @@ public class ThrowableBehavior : MonoBehaviour
         if (interactable == true)
         {
             if (Input.GetMouseButtonDown(0))
-            {
+            {   
+                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 gameObject.transform.parent = interactableBox;
                 rb.useGravity = false;
                 pickedup = true;

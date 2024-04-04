@@ -42,9 +42,14 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        elapsedTime += Time.deltaTime;
+    }
+
+
     void OnTriggerEnter(Collider other) 
     {   
-        Debug.Log("enter");
         if (other.gameObject.CompareTag("Block"))
         {
         Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody>();

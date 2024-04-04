@@ -479,6 +479,10 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 57c505d949d9ad34fbc32a4ff2fb55bf, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7233867138446155668, guid: 57c505d949d9ad34fbc32a4ff2fb55bf, type: 3}
       propertyPath: m_AABB.m_Extent.x
       value: 0
@@ -548,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b949d44a5c2a9f34ab2ef6bf45b219d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 10
   jumpHeight: 1
   gravity: 9.81
   airControl: 10

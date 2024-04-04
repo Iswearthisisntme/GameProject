@@ -9,6 +9,7 @@ public class MonsterBehavior : MonoBehaviour
 
     Animator anim;
     float monsterYPos;
+    public float minDistance = 1;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -34,7 +35,12 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float distance = Vector3.Distance(transform.position, player.position);
+        if(distance > minDistance) 
+        {
+            FaceTarget(player.transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
