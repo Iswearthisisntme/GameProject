@@ -17,23 +17,32 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     float jumpTransitionTimer = 0f;
     bool isJumping = false;
-    
+    float moveHorizontal;
+    float moveVertical;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-
         fastSpeed = moveSpeed * 1.8f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Debug.Log("leftshit");
+            input *= moveSpeed;
+        } 
+            Debug.Log("not");
+            input *= fastSpeed;
+        
 
         if (controller.isGrounded)
         {
@@ -75,18 +84,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
             anim.SetInteger("animState", 3);
-            input *= fastSpeed;
         }
         else 
         {
-            input *= moveSpeed;
-
             if (moveHorizontal != 0 || moveVertical > 0)
             {
                 anim.SetInteger("animState", 4);
