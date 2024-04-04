@@ -11,6 +11,7 @@ TagManager:
   - MonsterUnderTheBed
   - Candle
   - WanderPoint
+  - BloodyMary
   layers:
   - Default
   - TransparentFX
