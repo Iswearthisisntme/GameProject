@@ -253,6 +253,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3833f971162cdf4408d40a3823f556c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3649811096538654556}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3833f971162cdf4408d40a3823f556c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6062823448513296498}
   m_SourcePrefab: {fileID: 100100000, guid: 3833f971162cdf4408d40a3823f556c1, type: 3}
 --- !u!4 &2986854610083154331 stripped
 Transform:
@@ -313,7 +316,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8382379965970891170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6567d4bd4a431864189ec412cc81a026, type: 3}
   m_Name: 
@@ -345,6 +348,23 @@ NavMeshAgent:
   m_BaseOffset: -0.22
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6062823448513296498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382379965970891170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a7ffd1713074f41946f6b1c18b08ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  deadSFX: {fileID: 8300000, guid: e2f6b5ce0c6a58140b93fb2dab565e9a, type: 3}
+  currentHealth: 0
+  attackRate: 2
+  monsterDamageSFX: {fileID: 8300000, guid: 104d56174f23af54e9840608c6348e2d, type: 3}
 --- !u!4 &9160289233569291032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3833f971162cdf4408d40a3823f556c1, type: 3}
