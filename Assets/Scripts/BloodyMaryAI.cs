@@ -193,7 +193,7 @@ public class BloodyMaryAI : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(deadVFX, deadTransform.position, deadTransform.rotation);
+        //Instantiate(deadVFX, deadTransform.position, deadTransform.rotation);
     }
 
     private void OnDrawGizmos()
