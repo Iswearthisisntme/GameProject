@@ -6,6 +6,7 @@ public class MonsterBehavior : MonoBehaviour
 {
     public Transform player;
     public float moveSpeed = 0.01f;
+    float originalmoveSpeed;
 
     Animator anim;
     float monsterYPos;
@@ -29,6 +30,8 @@ public class MonsterBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
 
         anim.SetInteger("animState", 0);
+
+        originalmoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -57,12 +60,14 @@ public class MonsterBehavior : MonoBehaviour
             && hit.transform.tag == "MonsterUnderTheBed")
         {
             anim.SetInteger("animState", 0);
+            moveSpeed = 0.0f;
         }
         else 
         {
             FaceTarget(player.position);
             anim.SetInteger("animState", 1);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
+            moveSpeed = originalmoveSpeed;
         }
     }
 
