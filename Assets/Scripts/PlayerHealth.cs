@@ -55,6 +55,21 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void TakeRandomDamage()
+    {
+        Debug.Log("took damage");
+        if (currentHealth > 0)
+        {
+            int damageAmount = Random.Range(1, 3);
+            currentHealth -= damageAmount;
+        }
+        if (currentHealth <= 0)
+        {
+            PlayerDies();
+            levelManager.LevelLost();
+        }
+    }
+
     void PlayerDies()
     {
         transform.Rotate(-90, 0, 0, Space.Self);
