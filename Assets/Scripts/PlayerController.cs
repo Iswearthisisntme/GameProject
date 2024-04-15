@@ -8,15 +8,9 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 5.0f;
     public float gravity = 9.81f;
     public float airControl = 10;
-    public float jumpTransitionDelay = 0.5f;
-    public float sprintDuration = 1.0f;
-    float originalSprintDuration;
-    public float sprintCooldowns = 0.0f;
-    float originalSprintCooldown = 3.0f;
-    float noCooldown = 0.0f;
+    public float jumpTransitionDelay = 0.5f; 
 
     float fastSpeed;
-    bool isRunning;
 
     CharacterController controller;
     Vector3 input, moveDirection;
@@ -31,8 +25,6 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         fastSpeed = moveSpeed * 1.8f;
-        originalSprintDuration = sprintDuration;
-        isRunning = false;
     }
 
     // Update is called once per frame
@@ -43,38 +35,13 @@ public class PlayerController : MonoBehaviour
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
-        Debug.Log(sprintCooldowns);
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if(sprintCooldowns <= 0) 
-            {
-                input *= fastSpeed;
-                isRunning = true;
-                sprintDuration -= Time.deltaTime;
-                Debug.Log(sprintDuration);
-                if (sprintDuration <= 0)
-                {
-                    isRunning = false;
-                    Debug.Log("sprint over");
-                    anim.SetInteger("animState", 4);
-                    input *= moveSpeed;
-                    sprintDuration = originalSprintDuration;
-                    sprintCooldowns = originalSprintCooldown;
-                }
-            }
-            else
-            {
-                sprintCooldowns -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            Debug.Log("not");
+            Debug.Log("leftshit");
             input *= moveSpeed;
-            sprintDuration = originalSprintDuration;
-            sprintCooldowns = noCooldown;
-            isRunning = false;
-        }
+        } 
+            Debug.Log("not");
+            input *= fastSpeed;
         
 
         if (controller.isGrounded)
@@ -117,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && isRunning)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             anim.SetInteger("animState", 3);
         }

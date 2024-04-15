@@ -66,20 +66,10 @@ public class EnemyHealth : MonoBehaviour
             var PlayerHealth = other.gameObject.GetComponent<PlayerHealth>();
             if(elapsedTime >= attackRate)
             {
-                if(gameObject.CompareTag("BloodyMary"))
-                {
-                    Debug.Log("took bloody mary damage");
-                    AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
-                    PlayerHealth.TakeRandomDamage();
-                    elapsedTime = 0.0f;
-                }
-                else
-                {
-                    Debug.Log("took damage");
-                    AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
-                    PlayerHealth.TakeDamage();
-                    elapsedTime = 0.0f;
-                }
+                Debug.Log("took damage");
+                AudioSource.PlayClipAtPoint(monsterDamageSFX, Camera.main.transform.position);
+                PlayerHealth.TakeDamage();
+                elapsedTime = 0.0f;
             }
             
         }
