@@ -19,13 +19,13 @@ public class PlayerController : MonoBehaviour
     bool isJumping = false;
     float moveHorizontal;
     float moveVertical;
-    float originalSpeed;
+    float slowSpeed;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        originalSpeed = moveSpeed;
+        slowSpeed = moveSpeed / 100.0f;
         fastSpeed = moveSpeed * 1.8f;
     }
 
@@ -111,15 +111,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Clutter"))
         {
-            moveSpeed = originalSpeed / 2;
-
+            print("Clutter trigger");
+            input *= slowSpeed;
+            print(input);
             Invoke("ReturnToNormalSpeed", 3);
         }
     }
 
     private void ReturnToNormalSpeed()
     {
-        moveSpeed = originalSpeed;
+        print("normal speed");
+        input *= moveSpeed;
     }
 
 }
