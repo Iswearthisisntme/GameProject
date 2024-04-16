@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.81f;
     public float airControl = 10;
     public float jumpTransitionDelay = 0.5f; 
+    public bool isSlowed = false;
 
     float fastSpeed;
 
@@ -19,14 +20,14 @@ public class PlayerController : MonoBehaviour
     bool isJumping = false;
     float moveHorizontal;
     float moveVertical;
-    float slowSpeed;
+
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        slowSpeed = moveSpeed / 100.0f;
-        fastSpeed = moveSpeed * 1.8f;
+        fastSpeed = moveSpeed * 1.2f;
     }
 
     // Update is called once per frame
@@ -37,13 +38,14 @@ public class PlayerController : MonoBehaviour
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Debug.Log("leftshit");
-            input *= moveSpeed;
-        } 
-            Debug.Log("not");
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
             input *= fastSpeed;
+            } 
+            if (isSlowed == true) {
+                input = input/3;
+            }
+            input *= moveSpeed;
         
 
         if (controller.isGrounded)
@@ -111,16 +113,20 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Clutter"))
         {
-            print("Clutter trigger");
-            input *= slowSpeed;
-            print(input);
-            Invoke("ReturnToNormalSpeed", 3);
+           isSlowed = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Clutter"))
+        {
+            isSlowed = false;
         }
     }
 
     private void ReturnToNormalSpeed()
     {
-        print("normal speed");
         input *= moveSpeed;
     }
 
