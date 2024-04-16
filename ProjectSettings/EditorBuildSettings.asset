@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 81ad64978ddfb84418c4dac5ab5367d7
   - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
+    guid: ba85e11b0fd9a8940ae6ad07272e139f
+  - enabled: 1
     path: Assets/Scenes/MonsterUnderTheBedLevel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
