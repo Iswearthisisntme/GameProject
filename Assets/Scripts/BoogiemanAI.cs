@@ -75,7 +75,6 @@ public class BoogiemanAI : MonoBehaviour
     {
         anim.SetInteger("animState", 1);
         currentState = FSMStates.Chase;
-        FindNextPoint();
     }
 
     void UpdateChaseState()
@@ -100,7 +99,6 @@ public class BoogiemanAI : MonoBehaviour
 
     void UpdateAttackState()
     {
-        print("Attack!");
 
         nextDestination = player.transform.position;
         
@@ -118,15 +116,6 @@ public class BoogiemanAI : MonoBehaviour
 
         anim.SetInteger("animState", 2);
 
-    }
-
-    void FindNextPoint()
-    {
-        nextDestination = wanderPoints[currentDestinationIndex].transform.position;
-
-        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
-
-        agent.SetDestination(nextDestination);
     }
 
     void FaceTarget(Vector3 target)

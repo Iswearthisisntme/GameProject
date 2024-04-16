@@ -13,30 +13,12 @@ public class BoogiemanDamage : MonoBehaviour
     public float attackRate = 2.0f;
     public AudioClip monsterDamageSFX;
 
-
-    Animator anim;
     float elapsedTime = 0;
 
 
     void Start()
     {
         currentHealth = startingHealth;
-        anim = GetComponent<Animator>();
-    }
-
-    public void TakeDamage(int damageAmount)
-    {
-        if (currentHealth > 0)
-        {
-            currentHealth -= damageAmount;
-        }
-
-        if (currentHealth <= 0)
-        {
-            //dead!
-            anim.SetInteger("animState", 0);
-        }
-
     }
 
     void Update()
@@ -59,6 +41,7 @@ public class BoogiemanDamage : MonoBehaviour
                 for (int i = 0; i < attackTimes; i++)
                 {
                     PlayerHealth.TakeDamage();
+                    print(PlayerHealth.currentHealth);
                 }
                 elapsedTime = 0.0f;
             }

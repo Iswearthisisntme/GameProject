@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite emptyHeart;
 
     private LevelManager levelManager;
-    int currentHealth;
+    public static int currentHealth;
 
     // Start is called before the first frame update
     void Start()
