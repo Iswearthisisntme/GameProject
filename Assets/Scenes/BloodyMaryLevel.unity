@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d08c92572b634e469300df8819fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: BloodyMaryLevel
+  nextLevel: BoogieMan
   gameText: {fileID: 1797222594}
 --- !u!4 &156545440
 Transform:
