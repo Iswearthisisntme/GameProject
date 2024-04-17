@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BloodyMaryLevel.unity
     guid: eaa8d9cbfe6e8a147a23d797733a83ae
+  - enabled: 1
+    path: Assets/Scenes/ParentCutscene.unity
+    guid: e6a15c9324856e04bad459897831c8df
   m_configObjects: {}

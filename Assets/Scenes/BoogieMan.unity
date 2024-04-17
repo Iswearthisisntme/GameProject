@@ -6103,7 +6103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d08c92572b634e469300df8819fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: 
+  nextLevel: ParentCutscene
   gameText: {fileID: 2122524002}
 --- !u!1 &1166023592 stripped
 GameObject:

@@ -11,11 +11,13 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip pickupSFX;
     public AudioClip pluginSFX;
 
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         lightSocket = GameObject.FindGameObjectWithTag("Outlet");
         levelManager = FindObjectOfType<LevelManager>();
+
     }
 
     void Update()
@@ -29,6 +31,8 @@ public class PickupBehavior : MonoBehaviour
                 PlugIn();
                 AudioSource.PlayClipAtPoint(pluginSFX, Camera.main.transform.position);
             }
+
+
         }
     }
 
