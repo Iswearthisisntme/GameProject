@@ -35,7 +35,6 @@ public class BloodyMaryAI : MonoBehaviour
     int health;
 
     int currentDestinationIndex = 0;
-    Transform deadTransform;
     NavMeshAgent agent;
     
 
@@ -168,7 +167,9 @@ public class BloodyMaryAI : MonoBehaviour
     void UpdateDeadState()
     {
         anim.SetInteger("animState", 5);
-        deadTransform = gameObject.transform;
+        
+        enemySpeed = 0.0f;
+        agent.speed = 0.0f;
 
         Destroy(gameObject, 3);
     }
