@@ -4560,7 +4560,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3532514405288403833, guid: 9ef77582b5fbd454ab6f676a77eedca1, type: 3}
       propertyPath: enemySpeed
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6062823448513296498, guid: 9ef77582b5fbd454ab6f676a77eedca1, type: 3}
       propertyPath: currentHealth
@@ -4572,11 +4572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6800983119541875100, guid: 9ef77582b5fbd454ab6f676a77eedca1, type: 3}
       propertyPath: currentHealth
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6800983119541875100, guid: 9ef77582b5fbd454ab6f676a77eedca1, type: 3}
       propertyPath: startingHealth
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8382379965970891170, guid: 9ef77582b5fbd454ab6f676a77eedca1, type: 3}
       propertyPath: m_Name
