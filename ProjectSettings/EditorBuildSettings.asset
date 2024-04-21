@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ParentCutscene.unity
     guid: e6a15c9324856e04bad459897831c8df
+  - enabled: 1
+    path: Assets/Scenes/BoogieMan.unity
+    guid: 2e1654917ac2ba8408d8dcaea761a49d
   m_configObjects: {}
